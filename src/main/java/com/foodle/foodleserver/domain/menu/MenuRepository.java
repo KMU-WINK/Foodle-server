@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Long> {
-    List<Menu> findByTitleLike(String element);
+    List<Menu> findBySeparatedElementContaining(String element);
 }

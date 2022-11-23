@@ -38,7 +38,7 @@ public class MenuService {
 
     public List<SearchMenuResponseDto> getSearchMenus(SearchMenuRequestDto searchMenuRequestDto) {
         String element = searchMenuRequestDto.getSeparatedElement();
-        List<Menu> searchMenu = menuRepository.findByTitleLike(element);
+        List<Menu> searchMenu = menuRepository.findBySeparatedElementContaining(element);
 
         return searchMenu.stream()
                 .map(SearchMenuResponseDto::of)
