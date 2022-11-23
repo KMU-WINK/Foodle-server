@@ -12,5 +12,5 @@ public class Menu {
     private String name;
 
     @Column
-    private String imageLink;
+    private String separatedElement;
 }
