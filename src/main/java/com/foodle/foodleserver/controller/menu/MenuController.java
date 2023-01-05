@@ -1,6 +1,8 @@
 package com.foodle.foodleserver.controller.menu;
 
+import com.foodle.foodleserver.controller.menu.dto.request.RecommendMenuRequestDto;
 import com.foodle.foodleserver.service.menu.MenuService;
+import com.foodle.foodleserver.service.menu.dto.response.MenuResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +14,7 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/menus/recommend-list")
-    public RecommendResponseDto getRecommendMenus(@RequestBody RecommendRequestDto recommendRequestDto) {
-        return menuService.getRecommendMenus(recommendRequestDto);
+    public MenuResponseDto getRecommendMenus(@RequestBody RecommendMenuRequestDto recommendMenuRequestDto) {
+        return menuService.getRecommendMenus(recommendMenuRequestDto);
     }
 }
