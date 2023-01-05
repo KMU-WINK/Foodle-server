@@ -1,12 +1,16 @@
 package com.foodle.foodleserver.service.menu;
 
 import com.foodle.foodleserver.controller.menu.dto.request.RecommendMenuRequestDto;
+import com.foodle.foodleserver.controller.menu.dto.request.SearchMenuRequestDto;
+import com.foodle.foodleserver.domain.menu.Menu;
 import com.foodle.foodleserver.domain.menu.MenuRepository;
-import com.foodle.foodleserver.service.menu.dto.response.MenuResponseDto;
+import com.foodle.foodleserver.service.menu.dto.response.RecommendMenuResponseDto;
+import com.foodle.foodleserver.service.menu.dto.response.SearchMenuResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +18,7 @@ public class MenuService {
 
     private final MenuRepository menuRepository;
 
-    public MenuResponseDto getRecommendMenus(RecommendMenuRequestDto recommendMenuRequestDto) {
+    public RecommendMenuResponseDto getRecommendMenus(RecommendMenuRequestDto recommendMenuRequestDto) {
 
         // need model
         List<String> recommendFood = List.of(
@@ -29,6 +33,15 @@ public class MenuService {
                 "팝콘",
                 "감자탕"
         );
-        return MenuResponseDto.of(recommendFood);
+        return RecommendMenuResponseDto.of(recommendFood);
+    }
+
+    public List<SearchMenuResponseDto> getSearchMenus(SearchMenuRequestDto searchMenuRequestDto) {
+        String element = searchMenuRequestDto.getSeparatedElement();
+        List<Menu> searchMenu = menuRepository.findBySeparatedElementContaining(element);
+
+        return searchMenu.stream()
+                .map(SearchMenuResponseDto::of)
+                .collect(Collectors.toList());
     }
 }
