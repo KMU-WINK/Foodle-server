@@ -1,8 +1,11 @@
 package com.foodle.foodleserver.domain.menu;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
