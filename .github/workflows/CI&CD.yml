@@ -28,7 +28,7 @@ jobs:
           MYSQL_PASSWORD: foodlethebest
           MYSQL_ROOT_PASSWORD: foodlethebest
           MYSQL_DATABASE: foodle
-        ports: # 열어줄 포트, 8080:3306 형태로도 가능
+        ports: # 열어줄 포트, 8080:3306 형태로 가능
           - 3306
         options: >-  # 서비스에 걸어줄 옵션
           --health-cmd="mysqladmin ping"
