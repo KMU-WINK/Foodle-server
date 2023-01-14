@@ -37,13 +37,6 @@ jobs:
           --health-retries=3
       
     steps:
-      - name: Set up MySQL
-        run: |
-          mysql --version
-          sudo apt-get install -y mysql-client
-          sudo service mysql start
-          mysql -uroot -proot -e "CREATE DATABASE public_toilet"
-          mysql -uroot -proot -e "SHOW DATABASES"
       - name: checkout source code
         uses: actions/checkout@v3 # github action 버전 지정(major version)
         
