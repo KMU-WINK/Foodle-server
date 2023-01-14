@@ -20,7 +20,7 @@ public class MenuService {
 
     public RecommendMenuResponseDto getRecommendMenus(RecommendMenuRequestDto recommendMenuRequestDto) {
 
-        // need model
+        // TODO need model
         List<String> recommendFood = List.of(
                 "치킨",
                 "피자",
